@@ -1,7 +1,7 @@
 PYTHON_VER?=3.8
 NETBOX_VER?=v3.6.1
 
-NAME=netbox-bgp
+NAME=fedele-bgp
 
 COMPOSE_FILE=./develop/docker-compose.yml
 BUILD_NAME=netbox_bgp

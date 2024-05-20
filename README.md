@@ -1,59 +1,72 @@
-# NetBox BGP Plugin
-[Netbox](https://github.com/netbox-community/netbox) plugin for BGP related objects documentation.
+# Fedele BGP Extensión
+Esta extensión es un fork de https://github.com/netbox-community/netbox-bgp
 
-## Features
-This plugin provide following Models:
-* BGP Communities
-* BGP Sessions
-* Routing Policy
-* Prefix Lists 
+## Creación del Fork
+Para futuras actualizaciones de la Extensión, si se desea realizar un nuevo fork, se debe realizar el siguiente procedimiento:
 
-## Compatibility
+1. Hacer el Fork
+2. Añadir remoto: 
+  
+  ```
+  git remote add upstream [GitHub repo original]
+  ```
 
-|             |           |
-|-------------|-----------|
-| NetBox 3.4  | >= 0.9.0  |
-| NetBox 3.5  | >= 0.10.0 |
-| NetBox 3.6  | >= 0.11.0 |
+3. Obtener tags: 
+  ```
+  git fetch upstream --tags
+  ```
 
-## Installation
+4. Ir a rama main:
+  ```
+  git checkout main
+  ```
 
-The plugin is available as a Python package in pypi and can be installed with pip  
+5. Reiniciar rama main con el tag a utilizar:
 
+  ```
+  git reset --hard tags/nombre-del-tag  
+  ```
+
+6. Pushear cambios:
+  ```
+  git push --force origin main
+  ```
+
+## Instalación
+
+1. Cambiar netbox_bgp por fedele_bgp en ```__init__.py``` y en ```setup.py```
+
+2. Cambiar nombre de carpeta de proyecto a ```fedele_bgp```
+
+3. Cambiar nombre de carpeta ```/fedele_bgp/templates/netbox_bgp``` a ```/fedele_bgp/templates/fedele_bgp```
+
+4. Con ```Ctrl + Shift + H``` reemplazar ```netbox_bgp``` por ```fedele_bgp``` en TODOS lados
+
+5. Con ```Ctrl + Shift + H``` reemplazar ```netbox-bgp``` por ```fedele-bgp``` en TODOS lados
+
+6. Activar entorno virtual: 
 ```
-pip install netbox-bgp
+source /opt/o4n/O4N_FEDELE_SOURCE/venv/bin/activate
 ```
-Enable the plugin in /opt/netbox/netbox/netbox/configuration.py:
-```
-PLUGINS = ['fedele_bgp']
-```
-Restart NetBox and add `netbox-bgp` to your local_requirements.txt
 
-See [NetBox Documentation](https://docs.netbox.dev/en/stable/plugins/#installing-plugins) for details
+7. Instalar Extensión: 
+  ```
+  python setup.py develop
+  ```
 
-## Configuration
+8. En ```configuration.py``` de Fedele agregar:
+  ```
+  PLUGINS = ["fedele_bgp"]
+  ```
 
-The following options are available:
-* `device_ext_page`: String (default right) Device related BGP sessions table position. The following values are available:  
-left, right, full_width. Set empty value for disable.
-* `top_level_menu`: Bool (default False) Enable top level section navigation menu for the plugin. 
+9. Eliminar todas las migraciones de la carpeta ```migrations```
 
-## Screenshots
+10. Detectar migraciones:
+  ```
+  python manage.py makemigrations
+  ```
 
-BGP Session
-![BGP Session](docs/img/session.png)
-
-BGP Sessions
-![BGP Session Table](docs/img/sessions.png)
-
-Community
-![Community](docs/img/commun.png)
-
-Peer Group
-![Peer Group](docs/img/peer_group.png)
-
-Routing Policy
-![Routing Policy](docs/img/routepolicy.png)
-
-Prefix List
-![Prefix List](docs/img/preflist.png)
+11. Ejecutar migraciones:
+  ```
+  python manage.py migrate
+  ```
