@@ -24,14 +24,14 @@ def get_version(rel_path):
 
 
 setup(
-    name='netbox-bgp',
-    version=get_version('netbox_bgp/version.py'),
+    name='fedele-bgp',
+    version=get_version('fedele_bgp/version.py'),
     description='BGP related stuff',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url='https://github.com/k01ek/netbox-bgp',
-    author='Nikolay Yuzefovich',
-    author_email='mgk.kolek@gmail.com',
+    url='https://github.com/OctupusCloud/fedele_bgp',
+    author='Octupus',
+    author_email='maxi@octupus.com',
     install_requires=[],
     packages=find_packages(),
     include_package_data=True,

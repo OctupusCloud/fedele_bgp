@@ -25,7 +25,7 @@ pip install netbox-bgp
 ```
 Enable the plugin in /opt/netbox/netbox/netbox/configuration.py:
 ```
-PLUGINS = ['netbox_bgp']
+PLUGINS = ['fedele_bgp']
 ```
 Restart NetBox and add `netbox-bgp` to your local_requirements.txt
 
