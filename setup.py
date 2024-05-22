@@ -4,8 +4,9 @@ import os.path
 from setuptools import find_packages, setup
 
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+top_level_directory = os.path.abspath(os.path.dirname(__file__))
+with open(os.path.join(top_level_directory, 'README.md'), encoding='utf-8') as file:
+    long_description = file.read()
 
 
 def read(rel_path):
