@@ -94,7 +94,7 @@ class BGPPeerGroupTable(NetBoxTable):
         orderable=False
     )
     tags = TagColumn(
-        url_name='plugins:fedele_bgp:peer_group_list'
+        url_name='plugins:fedele_bgp:bgppeergroup_list'
     )
 
     class Meta(NetBoxTable.Meta):
